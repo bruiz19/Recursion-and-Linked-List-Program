@@ -15,7 +15,7 @@ Node * resetHead;
 int count();
 int sum();
 void printList(Node * head);
-void insertNode(Node * head, int num);
+void insertNode(Node * prev, int num);
 void deleteNode(Node * head);
 void resetNode(Node * resetHead);
 
