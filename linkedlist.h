@@ -11,13 +11,13 @@ Node * next;
 class LinkedList {
 private:
 Node * head;
-Node * reset;
+Node * resetHead;
 int count();
 int sum();
 void printList(Node * head);
 void insertNode(Node * head, int num);
 void deleteNode(Node * head);
-void resetNode(Node * reset);
+void resetNode(Node * resetHead);
 
 public:
 LinkedList();
