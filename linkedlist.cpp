@@ -3,17 +3,17 @@
 #include <string>
 #include <fstream>
 
-linkedlist::linkedlist() {
+LinkedList::LinkedList() {
 	head = nullptr;
 }
 
-linkedlist::~linkedlist() {
+LinkedList::~LinkedList() {
 		// RECURSIVE
-		head = headBackup;
+		head = resetHead;
 		deleteNode(head);
 }
 
-int linkedlist::count() {
+int LinkedList::count() {
 		// RECURSIVE
 		if(head == nullptr) {
 			return 0;
@@ -24,8 +24,8 @@ int linkedlist::count() {
 		}
 }
 
-void linkedlist::addToFront(int n) {
-	node *newNode = new node;
+void LinkedList::addToFront(int n) {
+Node *newNode = new Node;
 
 	if(head == nullptr) {
 		newNode->data = n;
@@ -33,7 +33,7 @@ void linkedlist::addToFront(int n) {
 		return;
 	}
 
-	node *prev = nullptr;
+	Node *prev = nullptr;
 	for(prev = head; prev != nullptr; prev = prev->next) {
 		if(n < head->data) {
 			newNode->data = n;
@@ -47,36 +47,36 @@ void linkedlist::addToFront(int n) {
 			return;
 		}
 		else if(n >= prev->data && prev->next != nullptr && n < prev->next->data) {
-			insert(prev, n);
+			insertNode(prev, n);
 			return;
 		}
 	}
 }
 
-double linkedlist::average() {
+double LinkedList::average() {
 		// uses sum and count functions
-		headBackup = head;
+		resetHead = head;
 		int sumOfList = sum();
-		resetHead(headBackup);
+		resetNode(resetHead);
 		int size = count();
-		resetHead(headBackup);
+		resetNode(resetHead);
 		return (double(sumOfList) / double(size));
 }
 
-int linkedlist::sum() {
+int LinkedList::sum() {
 		// RECURSIVE
 		if(head->next != nullptr) {
 			head = head->next;
 			return (head->data + sum());
 		}
 		else {
-			return headBackup->data;
+			return resetHead->data;
 		}
 }
 
-void linkedlist::writeInorder(string & file) {
+void LinkedList::writeInorder(string & file) {
 	ofstream writeData;
-	node *write = head;
+	Node *write = head;
 	writeData.open(file, ofstream::app);
 	while(write != nullptr) {
 		writeData << write->data << " ";
@@ -85,7 +85,7 @@ void linkedlist::writeInorder(string & file) {
 	writeData.close();
 }
 
-void linkedlist::writeReversed(string & file) {
+void LinkedList::writeReversed(string & file) {
 		// RECURSIVE
 		ofstream writeData;
 		writeData.open(file, ofstream::app);
@@ -102,22 +102,22 @@ void linkedlist::writeReversed(string & file) {
 		}
 }
 
-void linkedlist::printList(node* head) {
-	for(node *testA = head; testA != nullptr; testA = testA->next) {
+void LinkedList::printList(Node* head) {
+	for(Node *testA = head; testA != nullptr; testA = testA->next) {
 		cout << testA->data << " ";
 	}
 	cout << endl;
 }
 
-void linkedlist::insert(node* prev, int num) {
-	node *newNode = new node;
+void LinkedList::insert(Node* prev, int num) {
+	Node *newNode = new Node;
 	newNode->data = num;
 	newNode->next = prev->next;
 	prev->next = newNode;
 	return;
 }
 
-void linkedlist::deleteNode(node* head) {
+void LinkedList::deleteNode(Node* head) {
 	if(head->next == nullptr) {
 		delete head;
 		return;
@@ -128,6 +128,6 @@ void linkedlist::deleteNode(node* head) {
 	}
 }
 
-void linkedlist::resetHead(node* headBackup) {
-	head = headBackup;
+void LinkedList::resetNode(Node* resetHead) {
+	head = resetHead;
 }
