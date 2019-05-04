@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void readFile(linkedlist & list, string & file) {
+void readFile(LinkedList & list, string & file) {
 	ifstream readData;
 	int number;
 
@@ -18,7 +18,7 @@ readData.close();
 
 int main() {
 	string file = "list.txt";
-	linkedlist newList;
+	LinkedList newList;
 	double average = 0.0;
 
 	readFile(newList, file);
