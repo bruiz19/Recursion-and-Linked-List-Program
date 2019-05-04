@@ -25,8 +25,8 @@ LinkedList();
 
 void addtoFront(int n);
 double average();
-void writeInorder(string & myFile);
-void writeReversed(string & myFile);
+void writeInorder(string & file);
+void writeReversed(string & file);
 
 };
 #endif
