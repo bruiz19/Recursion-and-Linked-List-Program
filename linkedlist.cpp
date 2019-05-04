@@ -1,3 +1,6 @@
+//Brandon Ruiz 890130156
+//Section 02
+
 #include "linkedlist.h"
 #include <iostream>
 #include <string>
